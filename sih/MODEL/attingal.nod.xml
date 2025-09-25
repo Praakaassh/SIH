@@ -1,12 +1,8 @@
 <nodes>
     <node id="intersection_north" x="0" y="0"    type="traffic_light" />
     <node id="intersection_south" x="50" y="-200" type="traffic_light" />
-
     <node id="main_road_north" x="-50" y="150" />
     <node id="main_road_south" x="100" y="-350" />
-
     <node id="side_road_west" x="-150" y="20" />
     <node id="side_road_east" x="200" y="-220" />
-    <node id="intersection_north" x="0" y="0"    type="traffic_light" />
-    <node id="intersection_south" x="50" y="-200" type="traffic_light" />
 </nodes>

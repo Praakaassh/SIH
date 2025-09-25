@@ -1,20 +1,101 @@
 <routes>
-    <vType id="car" vClass="passenger" length="5" maxSpeed="50" color="1,1,0" />
-    <vType id="motorcycle" vClass="motorcycle" length="2.5" maxSpeed="60" color="0.8,0.2,0.2" />
+    <!-- Vehicle Types with Much Slower Realistic Speeds -->
+    <vType id="car" vClass="passenger" color="1,1,0" length="4.5" minGap="2.5" maxSpeed="6.94" accel="1.5" decel="4.0"/>
+    <vType id="truck" vClass="truck" color="0,1,0" length="12" minGap="3.0" maxSpeed="5.56" accel="1.0" decel="3.0"/>
+    <vType id="bus" vClass="bus" color="0,0,1" length="10" minGap="3.0" maxSpeed="6.11" accel="1.2" decel="3.5"/>
+    <vType id="motorcycle" vClass="motorcycle" color="1,0,1" length="2.5" minGap="1.5" maxSpeed="8.33" accel="2.0" decel="4.5"/>
 
-    <route id="route_N_S" edges="MainN_to_I1 I1_to_I2 I2_to_MainS" /> <route id="route_S_N" edges="MainS_to_I2 I2_to_I1 I1_to_MainN" /> <route id="route_W_N" edges="SideW_to_I1 I1_to_MainN" /> <route id="route_E_S" edges="SideE_to_I2 I2_to_MainS" /> <route id="route_N_E" edges="MainN_to_I1 I1_to_I2 I2_to_SideE" /> <flow id="wave1_main_ns" type="car" route="route_N_S" begin="0" end="600" vehsPerHour="800" />
-    <flow id="wave1_main_sn" type="motorcycle" route="route_S_N" begin="0" end="600" vehsPerHour="600" />
-    <flow id="wave1_side_wn" type="motorcycle" route="route_W_N" begin="0" end="600" vehsPerHour="50" />
+    <!-- Routes covering all possible paths in the network -->
+    <!-- North-South main routes -->
+    <route id="route_N_S" edges="MainN_to_I1 I1_to_I2 I2_to_MainS" />
+    <route id="route_S_N" edges="MainS_to_I2 I2_to_I1 I1_to_MainN" />
+    
+    <!-- East-West side routes -->
+    <route id="route_W_E" edges="SideW_to_I1 I1_to_I2 I2_to_SideE" />
+    <route id="route_E_W" edges="SideE_to_I2 I2_to_I1 I1_to_SideW" />
+    
+    <!-- North to East -->
+    <route id="route_N_E" edges="MainN_to_I1 I1_to_I2 I2_to_SideE" />
+    <!-- North to West -->
+    <route id="route_N_W" edges="MainN_to_I1 I1_to_SideW" />
+    
+    <!-- South to East -->
+    <route id="route_S_E" edges="MainS_to_I2 I2_to_SideE" />
+    <!-- South to West -->
+    <route id="route_S_W" edges="MainS_to_I2 I2_to_I1 I1_to_SideW" />
+    
+    <!-- East to North -->
+    <route id="route_E_N" edges="SideE_to_I2 I2_to_I1 I1_to_MainN" />
+    <!-- East to South -->
+    <route id="route_E_S" edges="SideE_to_I2 I2_to_MainS" />
+    
+    <!-- West to North -->
+    <route id="route_W_N" edges="SideW_to_I1 I1_to_MainN" />
+    <!-- West to South -->
+    <route id="route_W_S" edges="SideW_to_I1 I1_to_I2 I2_to_MainS" />
 
-
-    <flow id="wave2_main_ns" type="car" route="route_N_S" begin="600" end="1200" vehsPerHour="300" />
-    <flow id="wave2_main_sn" type="car" route="route_S_N" begin="600" end="1200" vehsPerHour="300" />
-    <flow id="wave2_side_es" type="motorcycle" route="route_E_S" begin="600" end="1200" vehsPerHour="100" />
-
-
-    <flow id="wave3_main_ns" type="car" route="route_N_S" begin="1200" end="1800" vehsPerHour="250" />
-    <flow id="wave3_side_wn" type="car" route="route_W_N" begin="1200" end="1800" vehsPerHour="400" />
-    <flow id="wave3_side_es" type="motorcycle" route="route_E_S" begin="1200" end="1800" vehsPerHour="300" />
-    <flow id="wave3_main_ne" type="car" route="route_N_E" begin="1200" end="1800" vehsPerHour="150" />
-
+    <!-- Heavy North-South Traffic (Main Route) -->
+    <flow id="flow_N_S_cars" type="car" route="route_N_S" begin="0" end="3600" vehsPerHour="600"/>
+    <flow id="flow_S_N_cars" type="car" route="route_S_N" begin="0" end="3600" vehsPerHour="580"/>
+    
+    <!-- Moderate East-West Traffic -->
+    <flow id="flow_W_E_cars" type="car" route="route_W_E" begin="0" end="3600" vehsPerHour="300"/>
+    <flow id="flow_E_W_cars" type="car" route="route_E_W" begin="0" end="3600" vehsPerHour="280"/>
+    
+    <!-- Turning Traffic from North -->
+    <flow id="flow_N_E_cars" type="car" route="route_N_E" begin="0" end="3600" vehsPerHour="150"/>
+    <flow id="flow_N_W_cars" type="car" route="route_N_W" begin="0" end="3600" vehsPerHour="120"/>
+    
+    <!-- Turning Traffic from South -->
+    <flow id="flow_S_E_cars" type="car" route="route_S_E" begin="0" end="3600" vehsPerHour="140"/>
+    <flow id="flow_S_W_cars" type="car" route="route_S_W" begin="0" end="3600" vehsPerHour="130"/>
+    
+    <!-- Turning Traffic from East -->
+    <flow id="flow_E_N_cars" type="car" route="route_E_N" begin="0" end="3600" vehsPerHour="100"/>
+    <flow id="flow_E_S_cars" type="car" route="route_E_S" begin="0" end="3600" vehsPerHour="110"/>
+    
+    <!-- Turning Traffic from West -->
+    <flow id="flow_W_N_cars" type="car" route="route_W_N" begin="0" end="3600" vehsPerHour="90"/>
+    <flow id="flow_W_S_cars" type="car" route="route_W_S" begin="0" end="3600" vehsPerHour="100"/>
+    
+    <!-- Truck Traffic (Lower frequency) -->
+    <flow id="flow_N_S_trucks" type="truck" route="route_N_S" begin="0" end="3600" vehsPerHour="80"/>
+    <flow id="flow_S_N_trucks" type="truck" route="route_S_N" begin="0" end="3600" vehsPerHour="75"/>
+    <flow id="flow_W_E_trucks" type="truck" route="route_W_E" begin="0" end="3600" vehsPerHour="40"/>
+    <flow id="flow_E_W_trucks" type="truck" route="route_E_W" begin="0" end="3600" vehsPerHour="35"/>
+    
+    <!-- Bus Traffic -->
+    <flow id="flow_N_S_buses" type="bus" route="route_N_S" begin="0" end="3600" vehsPerHour="30"/>
+    <flow id="flow_S_N_buses" type="bus" route="route_S_N" begin="0" end="3600" vehsPerHour="28"/>
+    
+    <!-- Motorcycle Traffic -->
+    <flow id="flow_N_S_bikes" type="motorcycle" route="route_N_S" begin="0" end="3600" vehsPerHour="200"/>
+    <flow id="flow_S_N_bikes" type="motorcycle" route="route_S_N" begin="0" end="3600" vehsPerHour="190"/>
+    <flow id="flow_W_E_bikes" type="motorcycle" route="route_W_E" begin="0" end="3600" vehsPerHour="120"/>
+    <flow id="flow_E_W_bikes" type="motorcycle" route="route_E_W" begin="0" end="3600" vehsPerHour="110"/>
+    
+    <!-- Rush Hour Additional Traffic (7-9 AM equivalent: 25200-32400 seconds) -->
+    <flow id="rush_N_S" type="car" route="route_N_S" begin="25200" end="32400" vehsPerHour="900"/>
+    <flow id="rush_S_N" type="car" route="route_S_N" begin="25200" end="32400" vehsPerHour="850"/>
+    
+    <!-- Evening Rush Hour (5-7 PM equivalent: 61200-68400 seconds) -->
+    <flow id="evening_rush_N_S" type="car" route="route_N_S" begin="61200" end="68400" vehsPerHour="800"/>
+    <flow id="evening_rush_S_N" type="car" route="route_S_N" begin="61200" end="68400" vehsPerHour="900"/>
+    
+    <!-- Some individual vehicles for variety -->
+    <vehicle id="special_truck_1" type="truck" route="route_N_S" depart="300" color="1,0,0"/>
+    <vehicle id="special_truck_2" type="truck" route="route_S_N" depart="450" color="1,0,0"/>
+    <vehicle id="special_bus_1" type="bus" route="route_W_E" depart="600" color="0,1,1"/>
+    <vehicle id="special_bus_2" type="bus" route="route_E_W" depart="750" color="0,1,1"/>
+    
+    <!-- Late night traffic (reduced frequency) -->
+    <flow id="night_N_S" type="car" route="route_N_S" begin="82800" end="86400" vehsPerHour="100"/>
+    <flow id="night_S_N" type="car" route="route_S_N" begin="82800" end="86400" vehsPerHour="95"/>
+    
+    <!-- Emergency vehicles (occasional) -->
+    <vType id="emergency" vClass="emergency" color="1,0,0" length="6" maxSpeed="11.11"/>
+    <vehicle id="ambulance_1" type="emergency" route="route_N_S" depart="1800"/>
+    <vehicle id="ambulance_2" type="emergency" route="route_S_N" depart="5400"/>
+    <vehicle id="fire_truck_1" type="emergency" route="route_W_E" depart="3600"/>
+    
 </routes>

@@ -1,0 +1,15 @@
+<routes>
+    <vehicle id="car1" depart="0">
+        <route edges="road"/>
+    </vehicle>
+    <vehicle id="car2" depart="5">
+        <route edges="road"/>
+    </vehicle>
+    <vehicle id="car3" depart="10">
+        <route edges="road"/>
+    </vehicle>
+<vType id="car_type" length="5" width="2" color="red"/>
+    <vehicle id="car" type="car_type" depart="0">
+        <route edges="road"/>
+    </vehicle>
+</routes>

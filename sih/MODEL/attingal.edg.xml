@@ -2,14 +2,11 @@
     <edge id="MainN_to_I1" from="main_road_north" to="intersection_north" numLanes="2" speed="16.67" shape="-25,75" />
     <edge id="I1_to_I2"    from="intersection_north" to="intersection_south" numLanes="2" speed="16.67" shape="25,-100" />
     <edge id="I2_to_MainS" from="intersection_south" to="main_road_south" numLanes="2" speed="16.67" shape="75,-275" />
-
     <edge id="MainS_to_I2" from="main_road_south" to="intersection_south" numLanes="2" speed="16.67" shape="75,-275" />
     <edge id="I2_to_I1"    from="intersection_south" to="intersection_north" numLanes="2" speed="16.67" shape="25,-100" />
     <edge id="I1_to_MainN" from="intersection_north" to="main_road_north" numLanes="2" speed="16.67" shape="-25,75" />
-
     <edge id="SideW_to_I1" from="side_road_west" to="intersection_north" numLanes="1" speed="11.11" />
     <edge id="I1_to_SideW" from="intersection_north" to="side_road_west" numLanes="1" speed="11.11" />
-
     <edge id="I2_to_SideE" from="intersection_south" to="side_road_east" numLanes="1" speed="11.11" />
     <edge id="SideE_to_I2" from="side_road_east" to="intersection_south" numLanes="1" speed="11.11" />
 </edges>
