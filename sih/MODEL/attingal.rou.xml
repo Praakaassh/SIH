@@ -1,0 +1,20 @@
+<routes>
+    <vType id="car" vClass="passenger" length="5" maxSpeed="50" color="1,1,0" />
+    <vType id="motorcycle" vClass="motorcycle" length="2.5" maxSpeed="60" color="0.8,0.2,0.2" />
+
+    <route id="route_N_S" edges="MainN_to_I1 I1_to_I2 I2_to_MainS" /> <route id="route_S_N" edges="MainS_to_I2 I2_to_I1 I1_to_MainN" /> <route id="route_W_N" edges="SideW_to_I1 I1_to_MainN" /> <route id="route_E_S" edges="SideE_to_I2 I2_to_MainS" /> <route id="route_N_E" edges="MainN_to_I1 I1_to_I2 I2_to_SideE" /> <flow id="wave1_main_ns" type="car" route="route_N_S" begin="0" end="600" vehsPerHour="800" />
+    <flow id="wave1_main_sn" type="motorcycle" route="route_S_N" begin="0" end="600" vehsPerHour="600" />
+    <flow id="wave1_side_wn" type="motorcycle" route="route_W_N" begin="0" end="600" vehsPerHour="50" />
+
+
+    <flow id="wave2_main_ns" type="car" route="route_N_S" begin="600" end="1200" vehsPerHour="300" />
+    <flow id="wave2_main_sn" type="car" route="route_S_N" begin="600" end="1200" vehsPerHour="300" />
+    <flow id="wave2_side_es" type="motorcycle" route="route_E_S" begin="600" end="1200" vehsPerHour="100" />
+
+
+    <flow id="wave3_main_ns" type="car" route="route_N_S" begin="1200" end="1800" vehsPerHour="250" />
+    <flow id="wave3_side_wn" type="car" route="route_W_N" begin="1200" end="1800" vehsPerHour="400" />
+    <flow id="wave3_side_es" type="motorcycle" route="route_E_S" begin="1200" end="1800" vehsPerHour="300" />
+    <flow id="wave3_main_ne" type="car" route="route_N_E" begin="1200" end="1800" vehsPerHour="150" />
+
+</routes>
