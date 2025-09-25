@@ -5,8 +5,7 @@
     </input>
     <time>
         <begin value="0"/>
-        <end value="7200"/>
-    </time>
+        </time>
     <processing>
         <collision.check-junctions value="true"/>
         <collision.action value="warn"/>
@@ -15,5 +14,4 @@
         <summary-output value="simulation_summary.xml"/>
         <tripinfo-output value="tripinfo.xml"/>
     </output>
-
 </configuration>
